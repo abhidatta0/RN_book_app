@@ -7,7 +7,7 @@ export type Book = {
     images: string[]
 }
 
-type Price  = {
+export type Price  = {
     type: BookFormatByBinding,
     price: number
 }
