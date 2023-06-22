@@ -1,4 +1,5 @@
 import {TouchableOpacity, View, Text, StyleSheet,Image } from 'react-native';
+import {SharedElement} from 'react-navigation-shared-element';
 import {theme} from '../constants/theme';
 import { Book } from '../types/book';
 
@@ -17,14 +18,14 @@ const BookInfoCard = ({ item, onPress}: Props)=> {
         <Text style={styles.title} numberOfLines={2}>{title}</Text>
         <Text numberOfLines={2} style={styles.description}>{description}</Text>
         <View style={styles.imageWrapper}>
+        <SharedElement id={`image1-${item._id}`}>
          <Image source={{uri: images[0]}} style={styles.image} resizeMode='contain'/>
+         </SharedElement>
         </View>
         <Text style={styles.title}>Starting from ${getStartingPrice()}</Text>
         <Text>
             {authors.join(',').toString()}
         </Text>
-        
-
     </TouchableOpacity>
   )
 }

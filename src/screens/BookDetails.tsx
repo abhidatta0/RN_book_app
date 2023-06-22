@@ -2,6 +2,7 @@ import {View, Text, StyleSheet, Image, useWindowDimensions, ScrollView,
      TouchableOpacity, ToastAndroid, Platform, Vibration} from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useState} from 'react';
+import {SharedElement} from 'react-navigation-shared-element';
 import {books} from './data';
 import { theme } from '../constants/theme';
 import { Price } from '../types/book';
@@ -34,7 +35,9 @@ const BookDetails = ({route} : Props)=> {
     <ScrollView contentContainerStyle={styles.container}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.authors}>by {authorsString}</Text>
-        <Image source={{uri: images[0]}} style={{width: '100%', height: windowHeight*0.7}} resizeMode='contain'/>
+        <SharedElement id={`image1-${book._id}`}>
+          <Image source={{uri: images[0]}} style={{width: '100%', height: windowHeight*0.7}} resizeMode='contain'/>
+        </SharedElement>
         <View style={styles.bookTypeGroup}>
             {
             prices.map((p)=> <TouchableOpacity key={p.type} 
