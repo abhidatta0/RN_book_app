@@ -4,15 +4,16 @@ import { Book } from '../types/book';
 
 type Props = {
     item: Book;
+    onPress: ()=> void;
 }
-const BookInfoCard = ({ item}: Props)=> {
+const BookInfoCard = ({ item, onPress}: Props)=> {
     const {title, description, images, prices, authors} = item;
     const getStartingPrice = ()=> {
        const sortedByPrice = [...prices].sort((a, b)=> a.price > b.price ? 1 :-1);
        return sortedByPrice[0].price;
     }
   return (
-    <TouchableOpacity style={[styles.cardWrapper]} activeOpacity={0.8}>
+    <TouchableOpacity style={[styles.cardWrapper]} activeOpacity={0.8} onPress={onPress}>
         <Text style={styles.title}>{title}</Text>
         <Text numberOfLines={2} style={styles.description}>{description}</Text>
         <View style={styles.imageWrapper}>
