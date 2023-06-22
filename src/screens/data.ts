@@ -27,8 +27,7 @@ export const books: Book[] = [
     {
         _id: '2',
         title:"Glut: Mastering Information through the Ages",
-        description:`What do primordial bacteria, medieval alchemists, and the World Wide Web have to do with each other? This fascinating exploration of how information systems emerge takes readers on a provocative journey through the history of the information age. \n\n
-        Today's "information explosion" may seem like an acutely modern phenomenon, but we are not the first generation--nor even the first species--to wrestle with the problem of information overload. Long before the advent of computers, human beings were collecting, storing, and organizing information: from Ice Age taxonomies to Sumerian archives, Greek libraries to Dark Age monasteries.`,
+        description:`What do primordial bacteria, medieval alchemists, and the World Wide Web have to do with each other? This fascinating exploration of how information systems emerge takes readers on a provocative journey through the history of the information age. \n\nToday's "information explosion" may seem like an acutely modern phenomenon, but we are not the first generation--nor even the first species--to wrestle with the problem of information overload. Long before the advent of computers, human beings were collecting, storing, and organizing information: from Ice Age taxonomies to Sumerian archives, Greek libraries to Dark Age monasteries.`,
         prices: [
             {
                 type: BookFormatByBinding.ebook,

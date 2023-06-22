@@ -14,7 +14,7 @@ const BookInfoCard = ({ item, onPress}: Props)=> {
     }
   return (
     <TouchableOpacity style={[styles.cardWrapper]} activeOpacity={0.8} onPress={onPress}>
-        <Text style={styles.title}>{title}</Text>
+        <Text style={styles.title} numberOfLines={2}>{title}</Text>
         <Text numberOfLines={2} style={styles.description}>{description}</Text>
         <View style={styles.imageWrapper}>
          <Image source={{uri: images[0]}} style={styles.image} resizeMode='contain'/>
@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         backgroundColor: theme.colors.surface,
         padding: 20,
         borderColor: theme.colors.grey,
-        borderWidth: 1,
         marginBottom: 5,
     },
     imageWrapper: {

@@ -1,13 +1,22 @@
 import {View, Text, StyleSheet, Image, useWindowDimensions, ScrollView,
      TouchableOpacity, ToastAndroid, Platform, Vibration} from 'react-native';
+import {StackScreenProps} from '@react-navigation/stack';
 import {useState} from 'react';
 import {books} from './data';
 import { theme } from '../constants/theme';
 import { Price } from '../types/book';
+import { RootStackParamList } from '../types/navigation';
 
-const BookDetails = ()=> {
+type Props = StackScreenProps<RootStackParamList, 'BookDetail'>;
+const BookDetails = ({route} : Props)=> {
+    const {itemId} = route.params;
+
     const {height: windowHeight} = useWindowDimensions();
-    const book = books[0];
+    const book = books.find((book)=> book._id === itemId);
+
+    if(!book){
+      return null;
+    }
     const { title, authors, description, images, prices} = book;
     const authorsString = authors.join(',');
 

@@ -4,7 +4,9 @@ export const theme = {
         secondary: '#ba04f1',
         surface: '#fff',
         text: '#000',
-        grey: '#636D60'
+        grey: '#636D60',
+        primaryScrim: '#d0ffdf',
+        secondaryScrim: '#f3d0fe'
     },
     fontSize: {
         xxl: 24,
