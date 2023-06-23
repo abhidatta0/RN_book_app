@@ -3,14 +3,17 @@ import {View, Text, StyleSheet, Image, useWindowDimensions, ScrollView,
 import {StackScreenProps} from '@react-navigation/stack';
 import {useState} from 'react';
 import {SharedElement} from 'react-navigation-shared-element';
+import {useDispatch } from 'react-redux';
 import {books} from './data';
 import { theme } from '../constants/theme';
 import { Price } from '../types/book';
-import { RootStackParamList } from '../types/navigation';
+import { StackNavParamList } from '../types/navigation';
+import { addCartItem as  addCartItemAction} from '../store/cartSlice';
 
-type Props = StackScreenProps<RootStackParamList, 'BookDetail'>;
+type Props = StackScreenProps<StackNavParamList, 'BookDetail'>;
 const BookDetails = ({route} : Props)=> {
     const {itemId} = route.params;
+    const dispatch = useDispatch();
 
     const {height: windowHeight} = useWindowDimensions();
     const book = books.find((book)=> book._id === itemId);
@@ -26,7 +29,7 @@ const BookDetails = ({route} : Props)=> {
     const addToCart = ()=> {
       ToastAndroid.show('Added to cart', ToastAndroid.BOTTOM);
       Vibration.vibrate(500);
-      console.log({selectedType});
+      dispatch(addCartItemAction({price: selectedType, product: book}));
     }
    
     const isSelected= (bookPrice: Price )=> bookPrice.type === selectedType.type;
@@ -46,7 +49,7 @@ const BookDetails = ({route} : Props)=> {
             style={[styles.bookTypeButton, isSelected(p) ? styles.selectedBookTypeButton: {}]} 
             onPress={()=> setSelectedType(p)}>
                 <Text style={[styles.bookType, isSelected(p) ? styles.selectedBookType : {}]}>{p.type}</Text>
-                <Text>$ {p.price}</Text>
+                <Text>Rs. {p.price}</Text>
                 </TouchableOpacity>)
             }
         </View>

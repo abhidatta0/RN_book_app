@@ -24,7 +24,7 @@ const BookInfoCard = ({ item, onPress}: Props)=> {
          <Image source={{uri: images[0]}} style={styles.image} resizeMode='contain'/>
          </SharedElement>
         </View>
-        <Text style={styles.title}>Starting from ${getStartingPrice()}</Text>
+        <Text style={styles.title}>Starting from Rs.{getStartingPrice()}</Text>
         <Text>
             {authors.join(',').toString()}
         </Text>
@@ -34,7 +34,7 @@ const BookInfoCard = ({ item, onPress}: Props)=> {
 
 const styles = StyleSheet.create({
     cardWrapper:{
-        shadowColor: 'black',
+        shadowColor: theme.colors.text,
         shadowOpacity: 0.26,
         shadowOffset: { width: 0, height: 2},
         shadowRadius: 10,

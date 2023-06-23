@@ -2,9 +2,9 @@ import { FlatList} from 'react-native';
 import type { StackScreenProps } from '@react-navigation/stack';
 import {books} from './data';
 import BookInfoCard from '../components/BookInfoCard';
-import { RootStackParamList } from '../types/navigation';
+import { StackNavParamList } from '../types/navigation';
 
-type Props = StackScreenProps<RootStackParamList,'Home'>;
+type Props = StackScreenProps<StackNavParamList,'Home'>;
 
 const Home= ({navigation}: Props)=> {
   const navigateToDetail = (id: string)=> {

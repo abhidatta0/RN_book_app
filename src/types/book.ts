@@ -17,3 +17,9 @@ export enum BookFormatByBinding  {
     hardcover = 'hardcover',
     ebook = 'ebook',
 }
+
+export type CartItem = {
+    product: Book,
+    quantity: number,
+    price: Price,
+}
