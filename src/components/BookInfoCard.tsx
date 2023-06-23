@@ -8,17 +8,19 @@ type Props = {
     onPress: ()=> void;
 }
 const BookInfoCard = ({ item, onPress}: Props)=> {
-    const {title, description, images, prices, authors} = item;
+    const {title, description, images, prices, authors, _id} = item;
     const getStartingPrice = ()=> {
        const sortedByPrice = [...prices].sort((a, b)=> a.price > b.price ? 1 :-1);
        return sortedByPrice[0].price;
     }
   return (
     <TouchableOpacity style={[styles.cardWrapper]} activeOpacity={0.8} onPress={onPress}>
+        <SharedElement id={`title-${_id}`}>
         <Text style={styles.title} numberOfLines={2}>{title}</Text>
+        </SharedElement>
         <Text numberOfLines={2} style={styles.description}>{description}</Text>
         <View style={styles.imageWrapper}>
-        <SharedElement id={`image1-${item._id}`}>
+        <SharedElement id={`image1-${_id}`}>
          <Image source={{uri: images[0]}} style={styles.image} resizeMode='contain'/>
          </SharedElement>
         </View>

@@ -1,7 +1,6 @@
 import 'react-native-gesture-handler';
 
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
 import {createSharedElementStackNavigator} from 'react-navigation-shared-element';
 import Home from './src/screens/Home';
 import BookDetails from './src/screens/BookDetails';
@@ -16,7 +15,20 @@ const App = ()=> {
       <Stack.Navigator screenOptions={{headerStyle: {backgroundColor:theme.colors.primaryScrim}}}>
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="BookDetail" component={BookDetails}
-        sharedElements={(route)=> [`image1-${route.params.itemId}`]}
+        sharedElements={(route)=> [
+          {id: `image1-${route.params.itemId}`, animation:'fade',}, 
+          {id: `title-${route.params.itemId}`, animation: 'fade-in',}
+        ]}
+        // options is not of much use in this UI
+        // options={()=> ({
+        //   cardStyleInterpolator: ({current: {progress}})=> {
+        //     return {
+        //       cardStyle: {
+        //         opacity: progress
+        //       }
+        //     }
+        //   }
+        // })}
         />
       </Stack.Navigator>
     </NavigationContainer>
