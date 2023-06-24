@@ -1,10 +1,12 @@
 import { Text, FlatList, View, StyleSheet, Pressable } from 'react-native';
 import {useSelector} from 'react-redux';
+import { useNavigation } from '@react-navigation/native';
 import { selectItems, selectSubTotal, selectDeliveryPrice, selectTotalPrice } from '../store/cartSlice';
 import CartListItem from '../components/CartListItem';
 import { pluralize } from '../utils/strings';
 import { theme } from '../constants/theme';
 import EmptyShoppingCart from '../components/EmptyShoppingCart';
+import { CartTabScreenProps } from "../types/navigation";
 
 const ShopppingCartTotals = () => {
     const subTotal = useSelector(selectSubTotal);
@@ -30,11 +32,12 @@ const ShopppingCartTotals = () => {
 }
 
 const BuyComponent = ()=> {
+    const navigation = useNavigation<CartTabScreenProps>();
     const cartItems = useSelector(selectItems);
     const cartItemCountString = pluralize('item', cartItems.length);
 
     const addToCart = () => {
-        console.log("add to cart");
+        navigation.navigate('OrderSuccess');
     }
 
    return <View style={{backgroundColor: theme.colors.surface}}>

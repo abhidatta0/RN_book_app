@@ -13,6 +13,7 @@ import ShoppingCart from '../screens/ShoppingCart';
 import BottomNavigationIcon from '../components/BottomNavigationIcon';
 import { selectItems } from '../store/cartSlice';
 import { pluralize } from '../utils/strings';
+import OrderSuccessful from '../screens/OrderSuccessful';
 
 const Stack = createSharedElementStackNavigator<StackNavParamList>();
 const BottomTab = createBottomTabNavigator<BottomNavParamList>();
@@ -36,6 +37,7 @@ const HomeTab = ()=> (
     //   }
     // })}
     />
+    <Stack.Screen name="OrderSuccess" component={OrderSuccessful} />
   </Stack.Navigator>
 )
 
@@ -43,6 +45,7 @@ const Navigation = ()=> {
    return (
     <NavigationContainer>
       <BottomTab.Navigator screenOptions={({route})=> ({headerStyle: {backgroundColor:theme.colors.primaryScrim},
+      headerShown: false,
        tabBarIcon: ({focused})=> {
         const color = focused ? theme.colors.primary : theme.colors.grey;
        if(route.name === 'HomeTab'){

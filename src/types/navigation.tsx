@@ -11,6 +11,7 @@ export type BottomNavParamList = {
 export type StackNavParamList = {
     Home: undefined;
     BookDetail: { itemId: string };
+    OrderSuccess: undefined;
 };
 
 export type CartTabScreenProps  = CompositeNavigationProp<
