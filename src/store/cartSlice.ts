@@ -46,6 +46,9 @@ const cartSlice = createSlice({
           }else{
             state.items.splice(idx, 1, {...oldItem, quantity: newQuantity});
           }
+        },
+        clearCart: (state)=>{
+          state.items = [];
         }
     }
 
@@ -53,7 +56,7 @@ const cartSlice = createSlice({
 
 export const {reducer: cartReducer, actions} = cartSlice;
 
-export const {addCartItem, changeQuantity} = actions;
+export const {addCartItem, changeQuantity, clearCart} = actions;
 
 export const selectItems = (state: RootState)=> state.cart.items;
 

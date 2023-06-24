@@ -1,5 +1,4 @@
 import { useNavigation } from '@react-navigation/native';
-import {useEffect, useLayoutEffect } from 'react';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 import {View, Text, StyleSheet} from 'react-native';
@@ -7,7 +6,8 @@ import { CartTabScreenProps } from '../types/navigation';
 import { theme } from '../constants/theme';
 
 const OrderSuccessful = ()=> {
-     
+    const navigation = useNavigation<CartTabScreenProps>();
+
    const getDeliveryDate = ()=>  { 
     const currentDate = new Date();
     const advanceByDays = 2;  // 2 days from current date
@@ -15,9 +15,14 @@ const OrderSuccessful = ()=> {
     const dateString = `${currentDate.getDate()}/${currentDate.getMonth()+1}/${currentDate.getFullYear()}`
     return dateString;
   }
+
+  const onClosePress  = ()=> {
+    navigation.navigate('Home');
+  }
+
    return (
     <View style={styles.container}>
-        <EntypoIcons name="cross" style={styles.close} size={30}/>
+        <EntypoIcons name="cross" style={styles.close} size={30} onPress={onClosePress}/>
 
         <MaterialCommunityIcons name="check-circle-outline" size={80}/>
         <Text style={styles.successText}>Order Placed!</Text>
