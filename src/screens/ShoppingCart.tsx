@@ -6,7 +6,7 @@ import CartListItem from '../components/CartListItem';
 import { pluralize } from '../utils/strings';
 import { theme } from '../constants/theme';
 import EmptyShoppingCart from '../components/EmptyShoppingCart';
-import { CartTabScreenProps } from "../types/navigation";
+import { ShoppingCartScreenProps } from "../types/navigation";
 
 const ShopppingCartTotals = () => {
     const subTotal = useSelector(selectSubTotal);
@@ -34,7 +34,7 @@ const ShopppingCartTotals = () => {
 const BuyComponent = ()=> {
     const dispatch = useDispatch();
 
-    const navigation = useNavigation<CartTabScreenProps>();
+    const navigation = useNavigation<ShoppingCartScreenProps>();
     const cartItems = useSelector(selectItems);
     const cartItemCountString = pluralize('item', cartItems.length);
 

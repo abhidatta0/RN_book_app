@@ -1,12 +1,14 @@
 import { Text, View, StyleSheet,Pressable } from "react-native";
 import {useNavigation} from '@react-navigation/native';
 import { theme } from "../constants/theme";
-import { CartTabScreenProps } from "../types/navigation";
+import { ShoppingCartScreenProps } from "../types/navigation";
 
 const EmptyShoppingCart = ()=> {
-    const navigation = useNavigation<CartTabScreenProps>();
+    const navigation = useNavigation<ShoppingCartScreenProps>();
     const onHomePress= ()=> {
-      navigation.navigate('Home');
+      navigation.navigate('HomeTab', {
+        screen:'Home'
+      });
     }
    return (
     <View style={styles.container}>

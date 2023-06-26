@@ -2,11 +2,11 @@ import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import EntypoIcons from 'react-native-vector-icons/Entypo';
 import {View, Text, StyleSheet} from 'react-native';
-import { CartTabScreenProps } from '../types/navigation';
+import { OrderSuccessScreenProps } from '../types/navigation';
 import { theme } from '../constants/theme';
 
 const OrderSuccessful = ()=> {
-    const navigation = useNavigation<CartTabScreenProps>();
+    const navigation = useNavigation<OrderSuccessScreenProps>();
 
    const getDeliveryDate = ()=>  { 
     const currentDate = new Date();
@@ -17,7 +17,9 @@ const OrderSuccessful = ()=> {
   }
 
   const onClosePress  = ()=> {
-    navigation.navigate('Home');
+    navigation.navigate('HomeTab', {
+        screen:'Home'
+    });
   }
 
    return (

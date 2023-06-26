@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 import {Text} from 'react-native';
 import Home from '../screens/Home';
 import BookDetails from '../screens/BookDetails';
-import { BottomNavParamList,StackNavParamList } from '../types/navigation';
+import { BottomNavParamList,HomeTabStackNavParamList, CartTabStackNavParamList } from '../types/navigation';
 import { theme } from '../constants/theme';
 import ShoppingCart from '../screens/ShoppingCart';
 import BottomNavigationIcon from '../components/BottomNavigationIcon';
@@ -15,13 +15,15 @@ import { selectItems } from '../store/cartSlice';
 import { pluralize } from '../utils/strings';
 import OrderSuccessful from '../screens/OrderSuccessful';
 
-const Stack = createSharedElementStackNavigator<StackNavParamList>();
+const HomeTabStack = createSharedElementStackNavigator<HomeTabStackNavParamList>();
+const CartTabStack = createSharedElementStackNavigator<CartTabStackNavParamList>();
+
 const BottomTab = createBottomTabNavigator<BottomNavParamList>();
 
 const HomeTab = ()=> (
-  <Stack.Navigator screenOptions={{headerShown: false}}>
-    <Stack.Screen name="Home" component={Home} />
-    <Stack.Screen name="BookDetail" component={BookDetails}
+  <HomeTabStack.Navigator screenOptions={{headerShown: false}}>
+    <HomeTabStack.Screen name="Home" component={Home} />
+    <HomeTabStack.Screen name="BookDetail" component={BookDetails}
     sharedElements={(route)=> [
       {id: `image1-${route.params.itemId}`, animation:'fade',}, 
       {id: `title-${route.params.itemId}`, animation: 'fade-in',}
@@ -37,8 +39,14 @@ const HomeTab = ()=> (
     //   }
     // })}
     />
-    <Stack.Screen name="OrderSuccess" component={OrderSuccessful} />
-  </Stack.Navigator>
+  </HomeTabStack.Navigator>
+)
+
+const CartTab = ()=> (
+  <CartTabStack.Navigator screenOptions={{headerShown: false}}>
+    <CartTabStack.Screen name="ShoppingCart" component={ShoppingCart} />
+    <CartTabStack.Screen name="OrderSuccess" component={OrderSuccessful} />
+  </CartTabStack.Navigator>
 )
 
 const Navigation = ()=> {
@@ -46,6 +54,7 @@ const Navigation = ()=> {
     <NavigationContainer>
       <BottomTab.Navigator screenOptions={({route})=> ({headerStyle: {backgroundColor:theme.colors.primaryScrim},
       headerShown: false,
+      unmountOnBlur: true,
        tabBarIcon: ({focused})=> {
         const color = focused ? theme.colors.primary : theme.colors.grey;
        if(route.name === 'HomeTab'){
@@ -56,7 +65,7 @@ const Navigation = ()=> {
        tabBarLabelStyle: {color: theme.colors.secondary }
       })}>
         <BottomTab.Screen name="HomeTab" component={HomeTab} options={{title:'Home'}}/>
-        <BottomTab.Screen name="CartTab" component={ShoppingCart} options={{title:'Cart'}}/>
+        <BottomTab.Screen name="CartTab" component={CartTab} options={{title:'Cart'}}/>
       </BottomTab.Navigator>
     </NavigationContainer>
    )

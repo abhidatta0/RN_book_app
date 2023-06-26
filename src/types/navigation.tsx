@@ -1,20 +1,29 @@
-import type { CompositeNavigationProp} from '@react-navigation/native';
+import type { CompositeNavigationProp, NavigatorScreenParams} from '@react-navigation/native';
 import type { BottomTabNavigationProp} from '@react-navigation/bottom-tabs';
 import type { StackNavigationProp} from '@react-navigation/stack';
 
 
 export type BottomNavParamList = {
-    HomeTab: undefined;
-    CartTab: undefined,
+    HomeTab: NavigatorScreenParams<HomeTabStackNavParamList>;
+    CartTab: NavigatorScreenParams<CartTabStackNavParamList>,
 };
 
-export type StackNavParamList = {
+export type HomeTabStackNavParamList = {
     Home: undefined;
     BookDetail: { itemId: string };
-    OrderSuccess: undefined;
 };
 
-export type CartTabScreenProps  = CompositeNavigationProp<
-BottomTabNavigationProp<BottomNavParamList, 'CartTab'>,
-StackNavigationProp<StackNavParamList>
+export type CartTabStackNavParamList = {
+    ShoppingCart: undefined;
+    OrderSuccess: undefined;
+}
+
+export type ShoppingCartScreenProps  = CompositeNavigationProp<
+StackNavigationProp<CartTabStackNavParamList,'ShoppingCart'>,
+BottomTabNavigationProp<BottomNavParamList>
+>;
+
+export type OrderSuccessScreenProps  = CompositeNavigationProp<
+StackNavigationProp<CartTabStackNavParamList,'OrderSuccess'>,
+BottomTabNavigationProp<BottomNavParamList>
 >;

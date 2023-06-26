@@ -7,10 +7,10 @@ import {useDispatch } from 'react-redux';
 import {books} from './data';
 import { theme } from '../constants/theme';
 import { Price } from '../types/book';
-import { StackNavParamList } from '../types/navigation';
+import { HomeTabStackNavParamList } from '../types/navigation';
 import { addCartItem as  addCartItemAction} from '../store/cartSlice';
 
-type Props = StackScreenProps<StackNavParamList, 'BookDetail'>;
+type Props = StackScreenProps<HomeTabStackNavParamList, 'BookDetail'>;
 const BookDetails = ({route} : Props)=> {
     const {itemId} = route.params;
     const dispatch = useDispatch();
