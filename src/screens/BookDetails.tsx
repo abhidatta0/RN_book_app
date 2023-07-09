@@ -40,7 +40,7 @@ const BookDetails = ({route} : Props)=> {
         <Text style={styles.title}>{title}</Text>
         </SharedElement>
         <Text style={styles.authors}>by {authorsString}</Text>
-        <SharedElement id={`image1-${book._id}`}>
+        <SharedElement id={`image-${book._id}`}>
           <Image source={{uri: images[0]}} style={{width: '100%', height: windowHeight*0.7}} resizeMode='contain'/>
         </SharedElement>
         <View style={styles.bookTypeGroup}>

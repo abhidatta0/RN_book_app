@@ -20,7 +20,7 @@ const BookInfoCard = ({ item, onPress}: Props)=> {
         </SharedElement>
         <Text numberOfLines={2} style={styles.description}>{description}</Text>
         <View style={styles.imageWrapper}>
-        <SharedElement id={`image1-${_id}`}>
+        <SharedElement id={`image-${_id}`}>
          <Image source={{uri: images[0]}} style={styles.image} resizeMode='contain'/>
          </SharedElement>
         </View>

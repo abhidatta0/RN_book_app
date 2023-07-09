@@ -25,7 +25,7 @@ const HomeTab = ()=> (
     <HomeTabStack.Screen name="Home" component={Home} />
     <HomeTabStack.Screen name="BookDetail" component={BookDetails}
     sharedElements={(route)=> [
-      {id: `image1-${route.params.itemId}`, animation:'fade',}, 
+      {id: `image-${route.params.itemId}`, animation:'fade',}, 
       {id: `title-${route.params.itemId}`, animation: 'fade-in',}
     ]}
     // options is not of much use in this UI
